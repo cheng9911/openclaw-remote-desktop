@@ -77,16 +77,6 @@ docs/多设备 AI 自动化控制网络.pdf
 * `Feishu Encrypt Key`
 * `Gateway Token`
 
-请 **不要将真实密钥提交到 GitHub 仓库中**。
-
-建议使用：
-
-```
-openclaw.example.json
-```
-
-作为模板配置文件。
-
 ---
 
 # Repository Structure
