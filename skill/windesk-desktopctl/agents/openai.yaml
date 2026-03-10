@@ -1,0 +1,3 @@
+interface:
+  display_name: "WinDesk Desktopctl"
+  short_description: "Run desktopctl.bat on a Windows OpenClaw node"

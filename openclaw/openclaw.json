@@ -1,0 +1,172 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.3.7",
+    "lastTouchedAt": "2026-03-10T07:39:12.771Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-03-10T07:39:12.757Z",
+    "lastRunVersion": "2026.3.7",
+    "lastRunCommand": "configure",
+    "lastRunMode": "local"
+  },
+  "auth": {
+    "profiles": {
+      "moonshot:default": {
+        "provider": "moonshot",
+        "mode": "api_key"
+      },
+      "google:default": {
+        "provider": "google",
+        "mode": "api_key"
+      }
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "moonshot": {
+        "baseUrl": "https://api.moonshot.cn/v1",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "kimi-k2.5",
+            "name": "Kimi K2.5",
+            "reasoning": false,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 256000,
+            "maxTokens": 8192
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "google/gemini-3.1-pro-preview",
+        "fallbacks": [
+          "moonshot/kimi-k2.5"
+        ]
+      },
+      "models": {
+        "moonshot/kimi-k2.5": {
+          "alias": "Kimi"
+        },
+        "google/gemini-3-flash-preview": {}
+      },
+      "workspace": "/home/rocos/.openclaw/workspace",
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    }
+  },
+  "tools": {
+    "profile": "coding",
+    "elevated": {
+      "enabled": true,
+      "allowFrom": {
+        "webchat": [
+          "*"
+        ]
+      }
+    },
+    "exec": {
+      "host": "node",
+      "security": "allowlist",
+      "ask": "on-miss",
+      "node": "WinDesk"
+    }
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "channels": {
+    "feishu": {
+      "enabled": true,
+      "appId": "YOUR_FEISHU_APP_ID",
+      "appSecret":"YOUR_FEISHU_APP_SECRET",
+      "connectionMode": "websocket",
+      "domain": "feishu",
+      "groupPolicy": "open",
+      "allowFrom": [],
+      "encryptKey": "YOUR_ENCRYPT_KEY",
+      "dmPolicy": "pairing"
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "loopback",
+    "controlUi": {
+      "allowedOrigins": [
+        "https://rocos-thinkstation-p3-tower.tailce3797.ts.net"
+      ]
+    },
+    "auth": {
+      "mode": "token",
+      "token": "YOUR_GATEWAY_TOKEN"
+    },
+    "tailscale": {
+      "mode": "serve",
+      "resetOnExit": false
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "contacts.add",
+        "calendar.add",
+        "reminders.add",
+        "sms.send"
+      ]
+    }
+  },
+  "plugins": {
+    "allow": [
+      "feishu"
+    ],
+    "entries": {
+      "feishu": {
+        "enabled": true
+      }
+    },
+    "installs": {
+      "feishu": {
+        "source": "npm",
+        "spec": "@openclaw/feishu",
+        "installPath": "/home/rocos/.openclaw/extensions/feishu",
+        "version": "2026.3.2",
+        "resolvedName": "@openclaw/feishu",
+        "resolvedVersion": "2026.3.2",
+        "resolvedSpec": "@openclaw/feishu@2026.3.2",
+        "integrity": "sha512-CpwjmLCS8gpZ5fFCRiEA+1i/L+E73Vhz5//TiwQjWJOtVPZEu44db294g3HUR6nB5L0IEpZgKU/JU69HgYl77w==",
+        "shasum": "ad77e27633b480f5c815e1922252a2f07c1765bd",
+        "resolvedAt": "2026-03-03T10:39:30.312Z",
+        "installedAt": "2026-03-03T10:39:31.524Z"
+      }
+    }
+  }
+}
